@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>�к��礪��͹ѡ���¹�Ѩ�����</title>
+    <title>ระบบเช็คชื่อนักเรียนอัจฉริยะ</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -39,13 +39,13 @@
         <header class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
              <div class="flex items-center space-x-3">
                 <i data-lucide="scan-face" class="text-blue-600 w-8 h-8"></i>
-                <h1 class="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-200">�к��礪��͹ѡ���¹�Ѩ�����</h1>
+                <h1 class="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-200">ระบบเช็คชื่อนักเรียนอัจฉริยะ</h1>
             </div>
             <div class="flex items-center gap-2">
                 <nav class="flex items-center flex-wrap justify-center space-x-1 md:space-x-2 bg-gray-200 dark:bg-gray-700 p-1 rounded-lg">
                     <button onclick="switchTab('dashboard')" id="tab-dashboard" class="px-3 py-1.5 text-sm font-medium rounded-md">Dashboard</button>
-                    <button onclick="switchTab('attendance')" id="tab-attendance" class="px-3 py-1.5 text-sm font-medium rounded-md">�礪���</button>
-                    <button onclick="switchTab('manage')" id="tab-manage" class="px-3 py-1.5 text-sm font-medium rounded-md">�Ѵ��â�����</button>
+                    <button onclick="switchTab('attendance')" id="tab-attendance" class="px-3 py-1.5 text-sm font-medium rounded-md">เช็คชื่อ</button>
+                    <button onclick="switchTab('manage')" id="tab-manage" class="px-3 py-1.5 text-sm font-medium rounded-md">จัดการข้อมูล</button>
                 </nav>
                 <button onclick="toggleTheme()" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5">
                     <i data-lucide="sun" id="theme-icon-sun" class="hidden w-5 h-5"></i>
@@ -56,29 +56,29 @@
 
         <!-- Dynamic Content Area -->
         <main id="main-content">
-            <!-- Dashboard Tab (˹���á) -->
+            <!-- Dashboard Tab (หน้าแรก) -->
             <div id="content-dashboard" class="space-y-6">
                  <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
                      <div class="flex flex-col sm:flex-row items-center justify-between mb-4 gap-4">
-                        <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">�Ҿ��������ª��͹ѡ���¹</h2>
+                        <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">ภาพรวมและรายชื่อนักเรียน</h2>
                         <input type="date" id="dashboard-date" class="border rounded-lg p-2 w-full sm:w-auto bg-transparent dark:text-gray-200 dark:border-gray-600">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-center">
-                         <div class="bg-blue-100 dark:bg-blue-900/50 p-4 rounded-lg"><h3 class="text-gray-600 dark:text-gray-400">�����¹</h3><p id="stat-present" class="text-3xl font-bold text-blue-700 dark:text-blue-400">0</p></div>
-                        <div class="bg-yellow-100 dark:bg-yellow-900/50 p-4 rounded-lg"><h3 class="text-gray-600 dark:text-gray-400">�����</h3><p id="stat-late" class="text-3xl font-bold text-yellow-700 dark:text-yellow-400">0</p></div>
-                        <div class="bg-red-100 dark:bg-red-900/50 p-4 rounded-lg"><h3 class="text-gray-600 dark:text-gray-400">�Ҵ/��</h3><p id="stat-absent" class="text-3xl font-bold text-red-700 dark:text-red-400">0</p></div>
+                         <div class="bg-blue-100 dark:bg-blue-900/50 p-4 rounded-lg"><h3 class="text-gray-600 dark:text-gray-400">มาเรียน</h3><p id="stat-present" class="text-3xl font-bold text-blue-700 dark:text-blue-400">0</p></div>
+                        <div class="bg-yellow-100 dark:bg-yellow-900/50 p-4 rounded-lg"><h3 class="text-gray-600 dark:text-gray-400">มาสาย</h3><p id="stat-late" class="text-3xl font-bold text-yellow-700 dark:text-yellow-400">0</p></div>
+                        <div class="bg-red-100 dark:bg-red-900/50 p-4 rounded-lg"><h3 class="text-gray-600 dark:text-gray-400">ขาด/ลา</h3><p id="stat-absent" class="text-3xl font-bold text-red-700 dark:text-red-400">0</p></div>
                     </div>
 
                     <!-- Chart Container -->
                     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 mt-6">
                         <div class="lg:col-span-2 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
-                            <h3 class="font-semibold mb-2 text-center">��ػ���������¹</h3>
+                            <h3 class="font-semibold mb-2 text-center">สรุปการเข้าเรียน</h3>
                             <div class="max-w-[250px] mx-auto">
                                  <canvas id="attendance-pie-chart"></canvas>
                             </div>
                         </div>
                         <div class="lg:col-span-3 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
-                            <h3 class="font-semibold mb-2 text-center">�ӹǹ����礪�����ª������</h3>
+                            <h3 class="font-semibold mb-2 text-center">จำนวนการเช็คชื่อรายชั่วโมง</h3>
                             <div>
                                 <canvas id="attendance-bar-chart"></canvas>
                             </div>
@@ -87,58 +87,58 @@
                     
                 </div>
                 <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
-                    <h3 class="font-semibold mb-4">��ª��͹ѡ���¹��к�</h3>
+                    <h3 class="font-semibold mb-4">รายชื่อนักเรียนในระบบ</h3>
                     <div id="student-roster-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 max-h-[60vh] overflow-y-auto custom-scrollbar pr-2"></div>
-                     <div id="roster-loading" class="text-center py-8"><div class="loader w-12 h-12 rounded-full border-4 border-gray-200 dark:border-gray-700 mx-auto"></div><p class="mt-4 text-gray-600 dark:text-gray-400">���ѧ��Ŵ�����Źѡ���¹...</p></div>
+                     <div id="roster-loading" class="text-center py-8"><div class="loader w-12 h-12 rounded-full border-4 border-gray-200 dark:border-gray-700 mx-auto"></div><p class="mt-4 text-gray-600 dark:text-gray-400">กำลังโหลดข้อมูลนักเรียน...</p></div>
                 </div>
             </div>
 
             <!-- Attendance Tab -->
             <div id="content-attendance" class="hidden space-y-6">
-                <div id="start-scan-section" class="text-center bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold mb-4">���������礪���</h2><p class="text-gray-600 dark:text-gray-400 mb-6">��������ҹ��ҧ����������Դ���ͧ����᡹�˹��</p><button onclick="startScanning()" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 text-lg font-semibold flex items-center justify-center mx-auto gap-2"><i data-lucide="camera"></i><span>������礪���</span></button></div>
+                <div id="start-scan-section" class="text-center bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md"><h2 class="text-2xl font-bold mb-4">เริ่มการเช็คชื่อ</h2><p class="text-gray-600 dark:text-gray-400 mb-6">กดปุ่มด้านล่างเพื่อเริ่มเปิดกล้องและสแกนใบหน้า</p><button onclick="startScanning()" class="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 text-lg font-semibold flex items-center justify-center mx-auto gap-2"><i data-lucide="camera"></i><span>àÃÔèÁàªç¤ª×èÍ</span></button></div>
                 
                 <div id="scanning-section" class="hidden space-y-6">
                     <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md flex flex-col items-center">
-                        <h2 class="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">���ѧ�᡹...</h2>
+                        <h2 class="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">¡ÓÅÑ§Êá¡¹...</h2>
                         <div id="video-loader" class="flex flex-col items-center justify-center h-64 w-full">
                             <div class="loader w-12 h-12 rounded-full border-4 border-gray-200 dark:border-gray-700"></div>
-                            <p id="video-loading-text" class="mt-4 text-gray-600 dark:text-gray-400">���ѧ�Դ���ͧ...</p>
+                            <p id="video-loading-text" class="mt-4 text-gray-600 dark:text-gray-400">¡ÓÅÑ§à»Ô´¡ÅéÍ§...</p>
                         </div>
                         <div class="w-full max-w-4xl mx-auto bg-black rounded-lg overflow-hidden relative aspect-video hidden" id="video-wrapper">
                             <video id="video" class="w-full h-full" autoplay muted playsinline></video>
                             <canvas id="overlay" class="absolute top-0 left-0"></canvas>
                             <div id="scan-success-overlay" class="absolute inset-0 bg-green-900 bg-opacity-70 text-white text-2xl font-bold flex items-center justify-center hidden animate-fade-in">
-                                <span id="scan-success-name"></span>&nbsp;�礪��������!
+                                <span id="scan-success-name"></span>&nbsp;àªç¤ª×èÍÊÓàÃç¨!
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
                         <button onclick="stopScanning()" class="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 text-lg font-semibold flex items-center justify-center mx-auto gap-2">
-                            <i data-lucide="stop-circle"></i><span>����ش����礪���</span>
+                            <i data-lucide="stop-circle"></i><span>ÊÔé¹ÊØ´¡ÒÃàªç¤ª×èÍ</span>
                         </button>
                     </div>
                 </div>
 
                 <div id="absence-management-section" class="hidden bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md">
-                    <h2 class="text-xl font-bold mb-4">��ػ�š���礪���</h2>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">��Ǩ�ͺʶҹТͧ�ѡ���¹��С��ѹ�֡�����׹�ѹ</p>
+                    <h2 class="text-xl font-bold mb-4">ÊÃØ»¼Å¡ÒÃàªç¤ª×èÍ</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">µÃÇ¨ÊÍºÊ¶Ò¹Ð¢Í§¹Ñ¡àÃÕÂ¹áÅÐ¡´ºÑ¹·Ö¡à¾×èÍÂ×¹ÂÑ¹</p>
                     <div id="absent-list" class="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-2"></div>
                     <div class="text-right mt-6">
-                        <button onclick="finishAttendance()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">�ѹ�֡����������</button>
+                        <button onclick="finishAttendance()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700">ºÑ¹·Ö¡áÅÐàÊÃç¨ÊÔé¹</button>
                     </div>
                 </div>
             </div>
 
             <!-- Manage Students Tab -->
             <div id="content-manage" class="hidden">
-                 <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md"><div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4"><h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">�Ѵ��â����Źѡ���¹</h2><button onclick="openStudentModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2 w-full sm:w-auto justify-center"><i data-lucide="user-plus"></i><span>�����ѡ���¹</span></button></div><div class="overflow-x-auto"><table class="w-full text-left min-w-[600px]"><thead class="bg-gray-50 dark:bg-gray-700/50"><tr><th class="p-3">���ʹѡ���¹</th><th class="p-3">����-ʡ��</th><th class="p-3">������¹</th><th class="p-3 text-center">�Ѵ���</th></tr></thead><tbody id="student-table-body" class="divide-y divide-gray-200 dark:divide-gray-700"></tbody></table></div></div>
+                 <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-md"><div class="flex flex-col sm:flex-row justify-between items-center mb-4 gap-4"><h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">¨Ñ´¡ÒÃ¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹</h2><button onclick="openStudentModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center space-x-2 w-full sm:w-auto justify-center"><i data-lucide="user-plus"></i><span>à¾ÔèÁ¹Ñ¡àÃÕÂ¹</span></button></div><div class="overflow-x-auto"><table class="w-full text-left min-w-[600px]"><thead class="bg-gray-50 dark:bg-gray-700/50"><tr><th class="p-3">ÃËÑÊ¹Ñ¡àÃÕÂ¹</th><th class="p-3">ª×èÍ-Ê¡ØÅ</th><th class="p-3">ªÑé¹àÃÕÂ¹</th><th class="p-3 text-center">¨Ñ´¡ÒÃ</th></tr></thead><tbody id="student-table-body" class="divide-y divide-gray-200 dark:divide-gray-700"></tbody></table></div></div>
             </div>
         </main>
     </div>
 
     <!-- Modals -->
-    <div id="setup-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 max-w-lg w-full"><h2 class="text-2xl font-bold mb-4">��駤���к������á</h2><p class="text-gray-600 dark:text-gray-400 mb-6">��سҹ� URL �ͧ Google Apps Script Web App �����ҡ��� Deploy ���ҧ�����</p><label for="gas-url" class="block font-medium mb-2">Google Apps Script URL:</label><input type="url" id="gas-url" placeholder="https://script.google.com/macros/s/..." class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3"><button onclick="saveGasUrl()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg mt-8 hover:bg-blue-700">�ѹ�֡������������ҹ</button></div></div>
-    <div id="student-modal" class="fixed inset-0 bg-gray-800 bg-opacity-70 flex items-center justify-center p-4 z-40 hidden"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar"><h2 id="modal-title" class="text-2xl font-bold mb-6">���������Źѡ���¹</h2><form id="student-form" onsubmit="handleStudentFormSubmit(event)"><input type="hidden" id="student-row-index"><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label for="student-id" class="block font-medium mb-2">���ʹѡ���¹</label><input type="text" id="student-id" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3" required><label for="student-name" class="block font-medium mb-2 mt-4">����-ʡ��</label><input type="text" id="student-name" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3" required><label for="student-class" class="block font-medium mb-2 mt-4">������¹</label><input type="text" id="student-class" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3" required></div><div class="flex flex-col"><div class="flex border-b border-gray-200 dark:border-gray-700 mb-4"><button type="button" id="tab-btn-camera" onclick="switchImageInput('camera')" class="flex-1 py-2 text-center font-medium border-b-2 border-blue-600 text-blue-600">�����Ҿ</button><button type="button" id="tab-btn-upload" onclick="switchImageInput('upload')" class="flex-1 py-2 text-center font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">�ѻ��Ŵ</button></div><div id="input-camera" class="flex flex-col items-center"><div class="w-full max-w-xs mx-auto aspect-[4/3] bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden relative"><video id="capture-video" class="w-full h-full object-cover" autoplay playsinline></video><canvas id="capture-canvas" class="hidden"></canvas></div><button type="button" onclick="capturePhoto()" class="bg-indigo-600 text-white px-4 py-2 mt-4 rounded-lg hover:bg-indigo-700 w-full max-w-xs">�����Ҿ</button></div><div id="input-upload" class="hidden flex flex-col items-center"><div class="w-full max-w-xs mx-auto aspect-[4/3] bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center"><img id="image-preview" src="" class="w-full h-full object-cover hidden"></div><input type="file" id="image-upload-input" accept="image/*" class="hidden"><button type="button" onclick="document.getElementById('image-upload-input').click()" class="bg-indigo-600 text-white px-4 py-2 mt-4 rounded-lg hover:bg-indigo-700 w-full max-w-xs">���͡����ٻ�Ҿ</button></div><input type="hidden" id="student-image-data"></div></div><div class="flex justify-end space-x-4 mt-8"><button type="button" onclick="closeStudentModal()" class="bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-300 px-6 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500">¡��ԡ</button><button type="submit" id="form-submit-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">�ѹ�֡</button></div></form></div></div>
+    <div id="setup-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 z-50"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8 max-w-lg w-full"><h2 class="text-2xl font-bold mb-4">µÑé§¤èÒÃÐºº¤ÃÑé§áÃ¡</h2><p class="text-gray-600 dark:text-gray-400 mb-6">¡ÃØ³Ò¹Ó URL ¢Í§ Google Apps Script Web App ·Õèä´é¨Ò¡¡ÒÃ Deploy ÁÒÇÒ§·Õè¹Õè</p><label for="gas-url" class="block font-medium mb-2">Google Apps Script URL:</label><input type="url" id="gas-url" placeholder="https://script.google.com/macros/s/..." class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3"><button onclick="saveGasUrl()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg mt-8 hover:bg-blue-700">ºÑ¹·Ö¡áÅÐàÃÔèÁµé¹ãªé§Ò¹</button></div></div>
+    <div id="student-modal" class="fixed inset-0 bg-gray-800 bg-opacity-70 flex items-center justify-center p-4 z-40 hidden"><div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar"><h2 id="modal-title" class="text-2xl font-bold mb-6">à¾ÔèÁ¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹</h2><form id="student-form" onsubmit="handleStudentFormSubmit(event)"><input type="hidden" id="student-row-index"><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label for="student-id" class="block font-medium mb-2">ÃËÑÊ¹Ñ¡àÃÕÂ¹</label><input type="text" id="student-id" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3" required><label for="student-name" class="block font-medium mb-2 mt-4">ª×èÍ-Ê¡ØÅ</label><input type="text" id="student-name" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3" required><label for="student-class" class="block font-medium mb-2 mt-4">ªÑé¹àÃÕÂ¹</label><input type="text" id="student-class" class="w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-lg p-3" required></div><div class="flex flex-col"><div class="flex border-b border-gray-200 dark:border-gray-700 mb-4"><button type="button" id="tab-btn-camera" onclick="switchImageInput('camera')" class="flex-1 py-2 text-center font-medium border-b-2 border-blue-600 text-blue-600">¶èÒÂÀÒ¾</button><button type="button" id="tab-btn-upload" onclick="switchImageInput('upload')" class="flex-1 py-2 text-center font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">ÍÑ»âËÅ´</button></div><div id="input-camera" class="flex flex-col items-center"><div class="w-full max-w-xs mx-auto aspect-[4/3] bg-gray-200 dark:bg-gray-700 rounded-lg overflow-hidden relative"><video id="capture-video" class="w-full h-full object-cover" autoplay playsinline></video><canvas id="capture-canvas" class="hidden"></canvas></div><button type="button" onclick="capturePhoto()" class="bg-indigo-600 text-white px-4 py-2 mt-4 rounded-lg hover:bg-indigo-700 w-full max-w-xs">¶èÒÂÀÒ¾</button></div><div id="input-upload" class="hidden flex flex-col items-center"><div class="w-full max-w-xs mx-auto aspect-[4/3] bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center"><img id="image-preview" src="" class="w-full h-full object-cover hidden"></div><input type="file" id="image-upload-input" accept="image/*" class="hidden"><button type="button" onclick="document.getElementById('image-upload-input').click()" class="bg-indigo-600 text-white px-4 py-2 mt-4 rounded-lg hover:bg-indigo-700 w-full max-w-xs">àÅ×Í¡ä¿ÅìÃÙ»ÀÒ¾</button></div><input type="hidden" id="student-image-data"></div></div><div class="flex justify-end space-x-4 mt-8"><button type="button" onclick="closeStudentModal()" class="bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-300 px-6 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-500">Â¡àÅÔ¡</button><button type="submit" id="form-submit-btn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">ºÑ¹·Ö¡</button></div></form></div></div>
 
     <script>
         // --- GLOBAL STATE & CONFIG ---
@@ -205,7 +205,7 @@
                 ]);
             } catch (error) {
                 console.error('Initialization failed:', error);
-                alert('�������ö��Ŵ���� AI �� ��س��ͧ���ê˹�����');
+                alert('äÁèÊÒÁÒÃ¶âËÅ´âÁà´Å AI ä´é ¡ÃØ³ÒÅÍ§ÃÕà¿ÃªË¹éÒàÇçº');
                 return;
             }
             switchTab('dashboard');
@@ -219,7 +219,7 @@
                 document.getElementById('setup-modal').style.display = 'none';
                 initializeApp();
             } else {
-                alert('��سҡ�͡ URL ���١��ͧ');
+                alert('¡ÃØ³Ò¡ÃÍ¡ URL ãËé¶Ù¡µéÍ§');
             }
         }
         
@@ -257,7 +257,7 @@
             if (response.success) {
                 students = response.data;
                 if (students.length === 0) {
-                    rosterGrid.innerHTML = `<p class="col-span-full text-center text-gray-500">�ѧ����բ����Źѡ���¹��к�</p>`;
+                    rosterGrid.innerHTML = `<p class="col-span-full text-center text-gray-500">ÂÑ§äÁèÁÕ¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹ã¹ÃÐºº</p>`;
                 } else {
                     students.forEach(student => {
                         const card = document.createElement('div');
@@ -266,7 +266,7 @@
                         rosterGrid.appendChild(card);
                     });
                 }
-            } else { rosterGrid.innerHTML = `<p class="col-span-full text-center text-red-500">�������ö��Ŵ�����Źѡ���¹��</p>`; }
+            } else { rosterGrid.innerHTML = `<p class="col-span-full text-center text-red-500">äÁèÊÒÁÒÃ¶âËÅ´¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹ä´é</p>`; }
             rosterLoading.style.display = 'none';
         }
 
@@ -295,7 +295,7 @@
             }
 
             document.getElementById('video-loader').style.display = 'flex';
-            document.getElementById('video-loading-text').innerText = '���ѧ�Դ���ͧ...';
+            document.getElementById('video-loading-text').innerText = '¡ÓÅÑ§à»Ô´¡ÅéÍ§...';
             document.getElementById('video-wrapper').classList.add('hidden');
             document.getElementById('scan-success-overlay').classList.add('hidden');
             document.getElementById('scanning-section').classList.add('hidden');
@@ -314,10 +314,10 @@
                     const checkedInRecord = checkedInToday.get(student.studentid);
                     let statusHtml;
 
-                    if (checkedInRecord && checkedInRecord.status === '�����¹') {
-                        statusHtml = `<p class="font-semibold text-sm text-green-500">ʶҹ�: �����¹ (�᡹����)</p>`;
+                    if (checkedInRecord && checkedInRecord.status === 'ÁÒàÃÕÂ¹') {
+                        statusHtml = `<p class="font-semibold text-sm text-green-500">Ê¶Ò¹Ð: ÁÒàÃÕÂ¹ (Êá¡¹áÅéÇ)</p>`;
                     } else {
-                        statusHtml = `<div class="flex gap-2" id="status-buttons-${student.studentid}"><button onclick="markStatus('${student.studentid}', '�Ҵ')" class="px-3 py-1 text-sm bg-red-100 text-red-700 rounded-full hover:bg-red-200 dark:bg-red-900/50 dark:text-red-300">�Ҵ</button><button onclick="markStatus('${student.studentid}', '��')" class="px-3 py-1 text-sm bg-yellow-100 text-yellow-700 rounded-full hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300">��</button></div>`;
+                        statusHtml = `<div class="flex gap-2" id="status-buttons-${student.studentid}"><button onclick="markStatus('${student.studentid}', '¢Ò´')" class="px-3 py-1 text-sm bg-red-100 text-red-700 rounded-full hover:bg-red-200 dark:bg-red-900/50 dark:text-red-300">¢Ò´</button><button onclick="markStatus('${student.studentid}', 'ÅÒ')" class="px-3 py-1 text-sm bg-yellow-100 text-yellow-700 rounded-full hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300">ÅÒ</button></div>`;
                     }
 
                     const item = document.createElement('div');
@@ -337,7 +337,7 @@
             checkedInToday.set(studentId, record);
             const buttonContainer = document.getElementById(`status-buttons-${studentId}`);
             if (buttonContainer) {
-                buttonContainer.innerHTML = `<p class="font-semibold text-sm ${status === '�Ҵ' ? 'text-red-500' : 'text-yellow-500'}">�ѹ�֡��: ${status}</p>`;
+                buttonContainer.innerHTML = `<p class="font-semibold text-sm ${status === '¢Ò´' ? 'text-red-500' : 'text-yellow-500'}">ºÑ¹·Ö¡à»ç¹: ${status}</p>`;
             }
         }
         
@@ -350,7 +350,7 @@
                 if (checkedInToday.has(student.studentid)) {
                     recordsToSave.push(checkedInToday.get(student.studentid));
                 } else {
-                    const absentRecord = { id: student.studentid, name: student.name, class: student.class, timestamp, location, status: '�Ҵ' };
+                    const absentRecord = { id: student.studentid, name: student.name, class: student.class, timestamp, location, status: '¢Ò´' };
                     recordsToSave.push(absentRecord);
                 }
             });
@@ -358,12 +358,12 @@
             if (recordsToSave.length > 0) {
                 const response = await apiCall({ action: 'recordAttendanceBulk', data: recordsToSave });
                 if (response.success) {
-                    alert('�ѹ�֡�����š���礪��ͷ��������º��������');
+                    alert('ºÑ¹·Ö¡¢éÍÁÙÅ¡ÒÃàªç¤ª×èÍ·Ñé§ËÁ´àÃÕÂºÃéÍÂáÅéÇ');
                 } else {
-                    alert('�Դ��ͼԴ��Ҵ㹡�úѹ�֡������ ��س��ͧ�����ա����');
+                    alert('à¡Ô´¢éÍ¼Ô´¾ÅÒ´ã¹¡ÒÃºÑ¹·Ö¡¢éÍÁÙÅ ¡ÃØ³ÒÅÍ§ãËÁèÍÕ¡¤ÃÑé§');
                 }
             } else {
-                alert('����բ����Źѡ���¹���ѹ�֡');
+                alert('äÁèÁÕ¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹ãËéºÑ¹·Ö¡');
             }
 
             checkedInToday.clear();
@@ -382,8 +382,8 @@
                 video.srcObject = stream;
             } catch (err) {
                 console.error('CRITICAL ERROR starting video stream:', err.name, err.message);
-                videoLoadingText.innerText = '�������ö�Դ���ͧ��! ��س�͹حҵ��������Ҷ֧���ͧ';
-                alert(`�������ö�Դ���ͧ��: ${err.name}\n��سҵ�Ǩ�ͺ��Ҥس��͹حҵ��������������Ҷ֧���ͧ����`);
+                videoLoadingText.innerText = 'äÁèÊÒÁÒÃ¶à»Ô´¡ÅéÍ§ä´é! ¡ÃØ³ÒÍ¹Ø­ÒµãËéàÇçºà¢éÒ¶Ö§¡ÅéÍ§';
+                alert(`äÁèÊÒÁÒÃ¶à»Ô´¡ÅéÍ§ä´é: ${err.name}\n¡ÃØ³ÒµÃÇ¨ÊÍºÇèÒ¤Ø³ä´éÍ¹Ø­ÒµãËéàºÃÒÇìà«ÍÃìà¢éÒ¶Ö§¡ÅéÍ§áÅéÇ`);
                 stopScanning(false);
             }
         }
@@ -438,7 +438,7 @@
         }
         
         function handleRecognition(student) {
-            const record = { id: student.studentid, name: student.name, class: student.class, timestamp: new Date().toISOString(), location: currentGeoLocation ? `${currentGeoLocation.lat},${currentGeoLocation.lng}` : 'N/A', status: '�����¹' };
+            const record = { id: student.studentid, name: student.name, class: student.class, timestamp: new Date().toISOString(), location: currentGeoLocation ? `${currentGeoLocation.lat},${currentGeoLocation.lng}` : 'N/A', status: 'ÁÒàÃÕÂ¹' };
             checkedInToday.set(student.studentid, record);
             
             const successOverlay = document.getElementById('scan-success-overlay');
@@ -496,7 +496,7 @@
             document.getElementById('student-image-data').value = '';
             switchImageInput('camera');
             if (student) {
-                document.getElementById('modal-title').innerText = '��䢢����Źѡ���¹';
+                document.getElementById('modal-title').innerText = 'á¡éä¢¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹';
                 document.getElementById('student-row-index').value = student.rowIndex;
                 document.getElementById('student-id').value = student.studentid;
                 document.getElementById('student-name').value = student.name;
@@ -508,7 +508,7 @@
                     document.getElementById('image-preview').classList.remove('hidden');
                 }
             } else {
-                document.getElementById('modal-title').innerText = '���������Źѡ���¹';
+                document.getElementById('modal-title').innerText = 'à¾ÔèÁ¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹';
             }
             document.getElementById('student-modal').classList.remove('hidden');
         }
@@ -526,7 +526,7 @@
                 document.getElementById('capture-video').srcObject = stream;
             } catch (e) {
                 console.error("Could not start video for capture", e);
-                alert('�������ö�Դ���ͧ����Ѻ�����Ҿ��');
+                alert('äÁèÊÒÁÒÃ¶à»Ô´¡ÅéÍ§ÊÓËÃÑº¶èÒÂÀÒ¾ä´é');
             }
         }
         function stopCaptureVideo() { 
@@ -543,14 +543,14 @@
         function capturePhoto() {
             const videoEl = document.getElementById('capture-video');
             if (!videoEl.srcObject) {
-                alert('��س��Դ���ͧ��͹�����Ҿ');
+                alert('¡ÃØ³Òà»Ô´¡ÅéÍ§¡èÍ¹¶èÒÂÀÒ¾');
                 return;
             }
             const canvas = document.getElementById('capture-canvas');
             canvas.width = videoEl.videoWidth; canvas.height = videoEl.videoHeight;
             canvas.getContext('2d').drawImage(videoEl, 0, 0, canvas.width, canvas.height);
             document.getElementById('student-image-data').value = canvas.toDataURL('image/jpeg');
-            alert('�����Ҿ���º��������');
+            alert('¶èÒÂÀÒ¾àÃÕÂºÃéÍÂáÅéÇ');
         }
         async function loadStudentDataForTable() {
             const response = await apiCall({ action: 'getStudents' });
@@ -560,7 +560,7 @@
                 tableBody.innerHTML = '';
                 students.forEach(student => {
                     const row = document.createElement('tr');
-                    row.innerHTML = `<td class="p-3">${student.studentid}</td><td class="p-3">${student.name}</td><td class="p-3">${student.class}</td><td class="p-3 text-center"><button onclick="editStudent(${student.rowIndex})" class="text-blue-600 p-1">���</button><button onclick="deleteStudent(${student.rowIndex})" class="text-red-600 p-1">ź</button></td>`;
+                    row.innerHTML = `<td class="p-3">${student.studentid}</td><td class="p-3">${student.name}</td><td class="p-3">${student.class}</td><td class="p-3 text-center"><button onclick="editStudent(${student.rowIndex})" class="text-blue-600 p-1">á¡éä¢</button><button onclick="deleteStudent(${student.rowIndex})" class="text-red-600 p-1">Åº</button></td>`;
                     tableBody.appendChild(row);
                  });
             }
@@ -568,20 +568,20 @@
         async function handleStudentFormSubmit(event) {
             event.preventDefault();
             const submitBtn = document.getElementById('form-submit-btn');
-            submitBtn.disabled = true; submitBtn.innerText = '���ѧ�ѹ�֡...';
+            submitBtn.disabled = true; submitBtn.innerText = '¡ÓÅÑ§ºÑ¹·Ö¡...';
             const studentData = { rowIndex: document.getElementById('student-row-index').value, id: document.getElementById('student-id').value, name: document.getElementById('student-name').value, class: document.getElementById('student-class').value, imageData: document.getElementById('student-image-data').value };
-            if (!studentData.imageData) { alert('��سҶ����Ҿ�����ѻ��Ŵ�ٻ�Ҿ');
-            submitBtn.disabled = false; submitBtn.innerText = '�ѹ�֡'; return; }
+            if (!studentData.imageData) { alert('¡ÃØ³Ò¶èÒÂÀÒ¾ËÃ×ÍÍÑ»âËÅ´ÃÙ»ÀÒ¾');
+            submitBtn.disabled = false; submitBtn.innerText = 'ºÑ¹·Ö¡'; return; }
             const action = studentData.rowIndex ? 'updateStudent' : 'addStudent';
             const response = await apiCall({ action, data: studentData });
             if (response.success) { closeStudentModal(); loadStudentDataForTable(); } else { alert('Error: ' + response.error); }
             submitBtn.disabled = false;
-            submitBtn.innerText = '�ѹ�֡';
+            submitBtn.innerText = 'ºÑ¹·Ö¡';
         }
         function editStudent(rowIndex) { const student = students.find(s => s.rowIndex == rowIndex);
         if (student) { openStudentModal(student); } }
         async function deleteStudent(rowIndex) {
-            if (confirm('�س������������ҵ�ͧ���ź�����Źѡ���¹�����?')) {
+            if (confirm('¤Ø³á¹èã¨ËÃ×ÍäÁèÇèÒµéÍ§¡ÒÃÅº¢éÍÁÙÅ¹Ñ¡àÃÕÂ¹¤¹¹Õé?')) {
                 const response = await apiCall({ action: 'deleteStudent', data: { rowIndex } });
                 if (response.success) { loadStudentDataForTable(); } else { alert('Error: ' + response.error); }
             }
@@ -605,10 +605,10 @@
             let onTimeCount = 0, lateCount = 0; const hourlyCounts = Array(24).fill(0);
             const presentStudents = new Set();
             attendanceToday.forEach(rec => {
-                if (rec.status === '�����¹') { if (!presentStudents.has(rec.id)) { if (rec.timestamp > lateTime) lateCount++; else onTimeCount++; } presentStudents.add(rec.id); }
+                if (rec.status === 'ÁÒàÃÕÂ¹') { if (!presentStudents.has(rec.id)) { if (rec.timestamp > lateTime) lateCount++; else onTimeCount++; } presentStudents.add(rec.id); }
                 hourlyCounts[rec.timestamp.getHours()]++;
             });
-            const absentOrLeaveCount = attendanceToday.filter(r => r.status === '�Ҵ' || r.status === '��').length;
+            const absentOrLeaveCount = attendanceToday.filter(r => r.status === '¢Ò´' || r.status === 'ÅÒ').length;
             document.getElementById('stat-present').innerText = onTimeCount + lateCount;
             document.getElementById('stat-late').innerText = lateCount;
             document.getElementById('stat-absent').innerText = absentOrLeaveCount;
@@ -625,17 +625,17 @@
                 ctx.clearRect(0, 0, pieCanvas.width, pieCanvas.height);
                 return; 
             }
-            pieChart = new Chart(ctx, { type: 'pie', data: { labels: ['�ҵç����', '�����', '�Ҵ/��'], datasets: [{ data: [onTime, late, absent], backgroundColor: ['#34D399', '#FBBF24', '#F87171'] }] } });
+            pieChart = new Chart(ctx, { type: 'pie', data: { labels: ['ÁÒµÃ§àÇÅÒ', 'ÁÒÊÒÂ', '¢Ò´/ÅÒ'], datasets: [{ data: [onTime, late, absent], backgroundColor: ['#34D399', '#FBBF24', '#F87171'] }] } });
         }
         function renderBarChart(hourlyData) {
             const barCanvas = document.getElementById('attendance-bar-chart');
             if (!barCanvas) return;
             const ctx = barCanvas.getContext('2d');
             if(barChart) barChart.destroy();
-             barChart = new Chart(ctx, { type: 'bar', data: { labels: Array.from({length: 12}, (_, i) => `${i+6}:00`), datasets: [{ label: '�ӹǹ�礪���', data: hourlyData.slice(6, 18), backgroundColor: '#60A5FA' }] }, options: { scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } } });
+             barChart = new Chart(ctx, { type: 'bar', data: { labels: Array.from({length: 12}, (_, i) => `${i+6}:00`), datasets: [{ label: '¨Ó¹Ç¹àªç¤ª×èÍ', data: hourlyData.slice(6, 18), backgroundColor: '#60A5FA' }] }, options: { scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } } });
         }
         async function apiCall(payload) {
-            if (!gasWebAppUrl) { alert('��سҵ�駤�� Google Apps Script URL ��͹');
+            if (!gasWebAppUrl) { alert('¡ÃØ³ÒµÑé§¤èÒ Google Apps Script URL ¡èÍ¹');
             return { success: false, error: 'GAS URL not configured' };
             }
             try {
@@ -644,9 +644,10 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return await response.json();
-            } catch (error) { console.error('API Call Error:', error); alert(`�Դ��ͼԴ��Ҵ㹡���������͡Ѻ Server:\n${error.message}\n��سҵ�Ǩ�ͺ Console (F12) ����Ѻ�������������`); return { success: false, error: error.message }; }
+            } catch (error) { console.error('API Call Error:', error); alert(`à¡Ô´¢éÍ¼Ô´¾ÅÒ´ã¹¡ÒÃàª×èÍÁµèÍ¡Ñº Server:\n${error.message}\n¡ÃØ³ÒµÃÇ¨ÊÍº Console (F12) ÊÓËÃÑº¢éÍÁÙÅà¾ÔèÁàµÔÁ`); return { success: false, error: error.message }; }
         }
     </script>
 </body>
 </html>
+
 
